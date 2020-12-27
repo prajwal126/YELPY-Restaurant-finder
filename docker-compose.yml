@@ -1,0 +1,9 @@
+# docker-compose.yml
+version: "3.7"
+services:
+  webapp:
+    image: prajwalprasad22/yelpy
+    ports:
+      - "80:80"
+    volumes:
+      - .:/var/www/html
