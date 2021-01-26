@@ -21,24 +21,22 @@ function sendRequest () {
       xhr.onreadystatechange = function () {  
           if (this.readyState == 4) {
              var json = JSON.parse(this.responseText);
-             var HTML = "<table class='ui selectable inverted table'><tr>";
-             HTML += "<th class='center aligned'>Result</th><th class='center aligned'>Image</th><th class='center aligned'>Name</th><th class='center aligned'>Rating</th></tr>"
-             for (let i=0;i<json.businesses.length;i++){
+             var HTML = '<div class="ui link cards" style="margin-left: 40px;">';
+            for (let i=0;i<json.businesses.length;i++){
                 if(json.businesses[i]!=undefined){
                   var currentBusiness = json.businesses[i];
+                  console.log(currentBusiness);
                   var location = { lat: currentBusiness.coordinates.latitude, lng: currentBusiness.coordinates.longitude };
                   var title = currentBusiness.name;
+                  var address = currentBusiness.location.display_address.join();
                   var pos= (i+1).toString();
                   addMarker(location,title,pos);
-                  HTML += '<tr style="text-align:center">';
-                  HTML += "<td>"+(i+1).toString()+"</td>";
-                  HTML += "<td><img class='ui centered small rounded image'  src='"+currentBusiness.image_url+"' alt='Not available'/> </td>";
-                  HTML += "<td><a href='"+currentBusiness.url+"' target='_blank'>"+currentBusiness.name+"</a></td>";
-                  HTML += "<td>"+currentBusiness.rating+"</td></tr>";
-
+                  HTML += "<div class='card'><div class='image'><img class='ui medium image' src='"+currentBusiness.image_url+"' alt='Not available'></div>";
+                  HTML += '<div class="content"><a class="header" href="'+currentBusiness.url+'">'+currentBusiness.name+'</a><div class="meta"><span class="date">'+address+'</span></div></div>';
+                  HTML += '<div class="extra content"><span class="right floated">'+currentBusiness.price+'</span><span><i class="heart icon"></i>'+currentBusiness.rating+'</span></div></div>';
                 }
              }
-            HTML+="</table>"
+            HTML+="</div>"
             document.getElementById("output").innerHTML = HTML;
           }
       };
