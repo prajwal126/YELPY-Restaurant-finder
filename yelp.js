@@ -31,9 +31,13 @@ function sendRequest () {
                   var address = currentBusiness.location.display_address.join();
                   var pos= (i+1).toString();
                   addMarker(location,title,pos);
+                  var price=''
+                  if(currentBusiness.price!=undefined){
+                     price=currentBusiness.price;
+                  }
                   HTML += "<div class='card'><div class='image'><img class='ui medium image' src='"+currentBusiness.image_url+"' alt='Not available'></div>";
                   HTML += '<div class="content"><a class="header" href="'+currentBusiness.url+'">'+currentBusiness.name+'</a><div class="meta"><span class="date">'+address+'</span></div></div>';
-                  HTML += '<div class="extra content"><span class="right floated">'+currentBusiness.price+'</span><span><i class="heart icon"></i>'+currentBusiness.rating+'</span></div></div>';
+                  HTML += '<div class="extra content"><span class="right floated">'+price+'</span><span><i class="heart icon"></i>'+currentBusiness.rating+'</span></div></div>';
                 }
              }
             HTML+="</div>"
