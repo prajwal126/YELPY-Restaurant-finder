@@ -21,8 +21,8 @@ function sendRequest () {
       xhr.onreadystatechange = function () {  
           if (this.readyState == 4) {
              var json = JSON.parse(this.responseText);
-             var HTML = "<table style='width:100%;'><tr>";
-             HTML += "<th>Result</th><th>Image</th><th>Name</th><th>Rating</th></tr>"
+             var HTML = "<table class='ui selectable inverted table'><tr>";
+             HTML += "<th class='center aligned'>Result</th><th class='center aligned'>Image</th><th class='center aligned'>Name</th><th class='center aligned'>Rating</th></tr>"
              for (let i=0;i<json.businesses.length;i++){
                 if(json.businesses[i]!=undefined){
                   var currentBusiness = json.businesses[i];
@@ -32,7 +32,7 @@ function sendRequest () {
                   addMarker(location,title,pos);
                   HTML += '<tr style="text-align:center">';
                   HTML += "<td>"+(i+1).toString()+"</td>";
-                  HTML += "<td><img width='100px' height = '100px' src='"+currentBusiness.image_url+"' alt='Not available'/> </td>";
+                  HTML += "<td><img class='ui centered small rounded image'  src='"+currentBusiness.image_url+"' alt='Not available'/> </td>";
                   HTML += "<td><a href='"+currentBusiness.url+"' target='_blank'>"+currentBusiness.name+"</a></td>";
                   HTML += "<td>"+currentBusiness.rating+"</td></tr>";
 

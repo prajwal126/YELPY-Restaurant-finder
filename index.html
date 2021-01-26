@@ -4,19 +4,13 @@
   <head>
     <title>Web Mashup: Display Best Restaurants on a Map</title>
     <center>
-    <h1 style="color:darkred;">Yelpy Restaurant Finder!</h1>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css">
+    <h1 class="ui header" style="color:whitesmoke;">Yelpy Restaurant Finder!</h1>
     <style>
         #map {
           height: 600px;
           width: 500px;
           align-items: center;
-        }
-        table, th,td {
-          border: 1px solid black;
-        }
-        th {
-          background-color:darkred;
-          color: white;
         }
     </style>
     <meta charset="utf-8"/>
@@ -24,11 +18,19 @@
     <!-- <script defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCXE6kqWD8Ult2F6aDMkDHKi93JbNb6V_Y&callback=initMap"></script> -->
     <script defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCXE6kqWD8Ult2F6aDMkDHKi93JbNb6V_Y"></script>
   </head>
-  <body onload="initialize();">
+  <body onload="initialize();" style="background-color:#242422;">
+
+    <div class="ui small form">
+      <div class="inline field">
+          <label style="color:whitesmoke;">Search Terms: </label>
+          <input placeholder="Restaurants, dishes, etc.." id="search" type="text">
+          <button class="ui primary button" onclick="sendRequest();">Find</button>
+        </div>
+
+    </div>
     
-    <form>
-       <label>Search Terms: <input type="text" id="search"/></label>
-       <input type="button" onclick="sendRequest();" value="Find"/>
+       <!-- <label>Search Terms: <input type="text" id="search"/></label> -->
+       <!-- <input type="button" onclick="sendRequest();" value="Find"/> -->
        
     </form>
     <br/>
